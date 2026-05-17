@@ -1,7 +1,10 @@
 from src.manager import GerenciadorGastos, CATEGORIAS
-
 def exibir_menu():
+    from src.cotacao import buscar_cotacao_dolar
+    cotacao = buscar_cotacao_dolar()
     print("\n===== Gerenciador de Gastos Pessoais =====")
+    if cotacao:
+        print(f"💵 Cotação do dólar: R$ {cotacao:.2f}")
     print("1. Adicionar gasto")
     print("2. Listar gastos")
     print("3. Ver total gasto")
