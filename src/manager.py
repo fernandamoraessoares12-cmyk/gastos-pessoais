@@ -37,3 +37,7 @@ class GerenciadorGastos:
                 resultado.get(g.categoria, 0) + g.valor
             )
         return resultado
+    def remover(self, indice: int):
+        if indice < 0 or indice >= len(self.gastos):
+            raise ValueError("Índice inválido.")
+        self.gastos.pop(indice)
