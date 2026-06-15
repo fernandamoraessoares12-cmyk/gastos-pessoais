@@ -1,6 +1,5 @@
 from datetime import date
-from src.database import listar_gastos, adicionar_gasto, deletar_gasto
-
+from src.database import listar_gastos, adicionar_gasto
 CATEGORIAS = ["alimentação", "transporte",
               "saúde", "lazer", "outros"]
 
