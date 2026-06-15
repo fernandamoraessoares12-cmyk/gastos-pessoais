@@ -1,4 +1,6 @@
 from src.manager import GerenciadorGastos, CATEGORIAS
+
+
 def exibir_menu():
     from src.cotacao import buscar_cotacao_dolar
     cotacao = buscar_cotacao_dolar()
@@ -9,13 +11,12 @@ def exibir_menu():
     print("2. Listar gastos")
     print("3. Ver total gasto")
     print("4. Ver gastos por categoria")
-    print("0. Sair")
     print("5. Remover gasto")
-    
+    print("0. Sair")
+
 
 def main():
     gerenciador = GerenciadorGastos()
-
     while True:
         exibir_menu()
         opcao = input("Escolha uma opção: ").strip()
@@ -42,7 +43,7 @@ def main():
             else:
                 print("\n--- Seus gastos ---")
                 for i, g in enumerate(gastos, 1):
-                    print(f"{i}. {g.descricao} | R$ {g.valor:.2f} | {g.categoria} | {g.data}")
+                    print(f"{i}. {g['descricao']} | R$ {float(g['valor']):.2f} | {g['categoria']} | {g['data']}")
 
         elif opcao == "3":
             print(f"\nTotal gasto: R$ {gerenciador.saldo_total():.2f}")
@@ -55,13 +56,22 @@ def main():
                 print("\n--- Por categoria ---")
                 for cat, total in cats.items():
                     print(f"{cat}: R$ {total:.2f}")
-                    
-                    elif opcao == "5":
-    elif opcao == "5":
-    listar_gastos(gerenciador)
-    indice = int(input("Digite o número do gasto que deseja remover: "))
-    gerenciador.remover(indice)
-    print("Gasto removido com sucesso!")
+
+        elif opcao == "5":
+            gastos = gerenciador.listar()
+            if not gastos:
+                print("Nenhum gasto registrado.")
+            else:
+                print("\n--- Seus gastos ---")
+                for i, g in enumerate(gastos, 1):
+                    print(f"{i}. {g['descricao']} | R$ {float(g['valor']):.2f} | {g['categoria']}")
+                try:
+                    indice = int(input("Digite o número do gasto que deseja remover: ")) - 1
+                    gasto_id = gastos[indice]["id"]
+                    gerenciador.remover(gasto_id)
+                    print("Gasto removido com sucesso!")
+                except (ValueError, IndexError):
+                    print("Número inválido.")
 
         elif opcao == "0":
             print("Até logo!")
@@ -69,6 +79,7 @@ def main():
 
         else:
             print("Opção inválida. Tente novamente.")
+
 
 if __name__ == "__main__":
     main()
