@@ -4,8 +4,7 @@ Aplicação para controle de gastos pessoais com persistência de dados na nuvem
 
 ## 🚀 Deploy
 
-Aplicação disponível em: https://replit.com/@fernandamoraess/gastos-pessoais
-
+Aplicação disponível em: Aplicação disponível em: https://replit.com/@fernandamoraess/gastos-pessoais
 ## 🛠️ Tecnologias
 
 - Python
