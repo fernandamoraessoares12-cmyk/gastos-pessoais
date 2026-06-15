@@ -2,22 +2,30 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, feature/integracao-supabase]
   pull_request:
     branches: [main, master]
 
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
+
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install dependencies
-        run: pip install ruff pytest
+        run: pip install ruff pytest supabase python-dotenv
+
       - name: Lint
         run: ruff check src/ tests/
+
       - name: Test
         run: pytest tests/ -v
-        
