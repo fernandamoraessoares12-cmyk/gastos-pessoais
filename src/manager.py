@@ -1,11 +1,9 @@
 from datetime import date
-from src.database import listar_gastos, adicionar_gasto
-CATEGORIAS = ["alimentação", "transporte",
-              "saúde", "lazer", "outros"]
+from src.database import listar_gastos, adicionar_gasto, deletar_gasto
 
+CATEGORIAS = ["alimentação", "transporte", "saúde", "lazer", "outros"]
 
 class GerenciadorGastos:
-
     def adicionar(self, descricao, valor, categoria):
         if valor <= 0:
             raise ValueError("Valor deve ser positivo.")
@@ -24,12 +22,10 @@ class GerenciadorGastos:
     def por_categoria(self):
         gastos = listar_gastos()
         resultado = {}
-        for g in self.gastos:
-            resultado[g.categoria] = (
-                resultado.get(g.categoria, 0) + g.valor
-            )
+        for g in gastos:
+            cat = g["categoria"]
+            resultado[cat] = resultado.get(cat, 0) + float(g["valor"])
         return resultado
-    def remover(self, indice: int):
-        if indice < 0 or indice >= len(self.gastos):
-            raise ValueError("Índice inválido.")
-        self.gastos.pop(indice)
+
+    def remover(self, gasto_id):
+        return deletar_gasto(gasto_id)
