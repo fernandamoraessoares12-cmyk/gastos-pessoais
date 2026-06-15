@@ -55,20 +55,14 @@ def main():
                 print("\n--- Por categoria ---")
                 for cat, total in cats.items():
                     print(f"{cat}: R$ {total:.2f}")
-                    
-                    elif opcao == "5":
-    elif opcao == "5":
-    listar_gastos(gerenciador)
-    indice = int(input("Digite o número do gasto que deseja remover: "))
-    gerenciador.remover(indice)
-    print("Gasto removido com sucesso!")
+
+        elif opcao == "5":
+            indice = int(input("Digite o número do gasto que deseja remover: "))
+            gerenciador.remover(indice)
+            print("Gasto removido com sucesso!")
 
         elif opcao == "0":
             print("Até logo!")
             break
-
-        else:
-            print("Opção inválida. Tente novamente.")
-
 if __name__ == "__main__":
     main()
