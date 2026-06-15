@@ -32,3 +32,16 @@ CREATE TABLE gastos (
 );
 ```
 3. Crie um arquivo `.env` na raiz com:
+4. ## ▶️ Como rodar localmente
+
+```bash
+pip install supabase python-dotenv pytest
+pytest tests/ -v
+```
+
+## 👥 Equipe
+
+| Nome | GitHub |
+|------|--------|
+| Fernanda Moraes Soares | [@fernandamoraessoares12-cmyk](https://github.com/fernandamoraessoares12-cmyk) |
+| Mary Fernanda | [@maryfernandasdn](https://github.com/maryfernandasdn) |
