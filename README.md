@@ -4,8 +4,7 @@ Aplicação para controle de gastos pessoais com persistência de dados na nuvem
 
 ## 🚀 Deploy
 
-Aplicação disponível em: Aplicação disponível em: https://replit.com/@fernandamoraess/gastos-pessoais
-## 🛠️ Tecnologias
+Aplicação disponível em: Aplicação disponível em: https://gastos-pessoais-8967.onrender.com
 
 - Python
 - Supabase (PostgreSQL na nuvem)
