@@ -19,18 +19,13 @@ class GerenciadorGastos:
         return listar_gastos()
 
     def saldo_total(self):
-        gastos = listar_gastos()
-        return sum(float(g["valor"]) for g in gastos)
+        result = listar_gastos()
+        return sum(float(g["valor"]) for g in result)
 
     def por_categoria(self):
-        gastos = listar_gastos()
+        result = listar_gastos()
         resultado = {}
-        for g in self.gastos:
-            resultado[g.categoria] = (
-                resultado.get(g.categoria, 0) + g.valor
-            )
+        for g in result:
+            cat = g["categoria"]
+            resultado[cat] = resultado.get(cat, 0) + float(g["valor"])
         return resultado
-    def remover(self, indice: int):
-        if indice < 0 or indice >= len(self.gastos):
-            raise ValueError("Índice inválido.")
-        self.gastos.pop(indice)
